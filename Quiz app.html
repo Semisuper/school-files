@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+	<head>
+		<title>Quiz App</title>
+	</head>
+	<body>
+		<p> What is option C?</p><br>
+		<input type="radio" name="q1" value="1">a. I am option a</input><br>
+		<input type="radio" name="q1" value="2">b. I am option B</input><br>
+		<input type="radio" name="q1" value="3">c. I am option C</input><br>
+		<input type="radio" name="q1" value="4">d. I am option D</input><br>
+		
+		<p> What IDE am I currently using? </p><br>
+		<input type="radio" name="q2" value="1">a. Notepad++</input><br>
+		<input type="radio" name="q2" value="2">b. NetBeans</input><br>
+		<input type="radio" name="q2" value="3">c. VisualStudio</input><br>
+		<input type="radio" name="q2" value="4">d. Txt Editor</input><br>
+		
+		<p> Who invented dynamite? </p><br>
+		<input type="radio" name="q3" value="1">a. Albert Einstein</input><br>
+		<input type="radio" name="q3" value="2">b. Alfred Nobel</input><br>
+		<input type="radio" name="q3" value="3">c. Isaac Newton</input><br>
+		<input type="radio" name="q3" value="4">d. Jeff</input><br>
+		
+		<p> What is the highest selling video game ever? </p><br>
+		<input type="radio" name="q4" value="1">a. OneShot</input><br>
+		<input type="radio" name="q4" value="2">b. Minecraft</input><br>
+		<input type="radio" name="q4" value="3">c. Grand Theft Auto V</input><br>
+		<input type="radio" name="q4" value="4">d. Tetris</input><br>
+		
+		<p> Are you a nerd? </p><br>
+		<input type="radio" name="q5" value="1">a. yes</input><br>
+		<input type="radio" name="q5" value="2">b. no</input><br>
+		<input type="radio" name="q5" value="3">c. what?</input><br>
+		<input type="radio" name="q5" value="4">d. rude.</input><br>
+		
+		<button id="submit">Submit Answers</button><br>
+		<p id="result"></p>
+		
+		<script>
+			let submitOption = document.getElementById("submit")
+			let userResult = document.getElementById("result")
+			const correctAnswers = {
+				q1: "3", //Correct Answer is Option C
+				q2: "1",
+				q3: "2",
+				q4: "4",
+				q5: "1"
+			};
+			submitOption.addEventListener("click", function () {
+				let correctScore = 0;
+				
+				for (const questions in correctAnswers) { //loop while there are answers left to check
+					const selectedOption = document.querySelector(`input[name="${questions}"]:checked`);
+					
+					if (selectedOption && selectedOption.value === correctAnswers[questions]) {
+						correctScore++;
+					};
+				};
+				
+				userResult.textContent = `you scored ${correctScore}/5 or ${(correctScore / 5.0) * 100}%!`;
+			});
+		</script>
+	</body>
+</html>
