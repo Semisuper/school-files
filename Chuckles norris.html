@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+	<head>
+		<title>Chuckles norris</title>
+	</head>
+	<body>
+		<button id="getJoke">Chuck Norris Joke Here!</button><br>
+		<p id="jokeOutput"></p>
+		<script>
+			const url = "https://api.chucknorris.io/jokes/random"; //stores the url in a container the program can access
+			
+			document.getElementById("getJoke").addEventListener("click", recieveJoke); //button pressed, get joke
+			
+			function recieveJoke() {
+				fetch(url) //connect and grab a joke
+				.then(response => response.json()) //stop and parse the data recieved for the joke
+				.then(data => {
+					document.getElementById("jokeOutput").textContent = data.value;
+				});
+			}
+		</script>
+	</body>
+</html>
